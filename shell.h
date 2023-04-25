@@ -1,5 +1,5 @@
-#ifndef SHELLY_H
-#define SHELLY_H
+#ifndef SHELL_H
+#define SHELL_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,10 +12,7 @@
 #include <fcntl.h>
 #include <errno.h>
 
-/* for read/write buffers */
-#define READ_BUF_SIZE 1024
-#define WRITE_BUF_SIZE 1024
-#define BUF_FLUSH -1
+
 
 /* for command chaining */
 #define CMD_NORM	0
@@ -31,10 +28,15 @@
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
-#define HIST_FILE	".simple_shell_history"
+#define HIST_FILE	".simple_shell-history"
 #define HIST_MAX	4096
 
 extern char **environ;
+
+/* for read/write buffers */
+#define READ_BUF_SIZE 1024
+#define WRITE_BUF_SIZE 1024
+#define BUF_FLUSH -1
 
 
 /**
@@ -48,10 +50,10 @@ typedef struct liststr
 	int num;
 	char *str;
 	struct liststr *next;
-} list_t;
+} roster_t;
 
 /**
- *struct passinfo - contains pseudo-arguements to pass into a function,
+ *struct feeding - contains pseudo-arguements to  feed into a function,
  *					allowing uniform prototype for function pointer struct
  *@arg: a string generated from getline containing arguements
  *@argv: an array of strings generated from arg
@@ -72,7 +74,7 @@ typedef struct liststr
  *@readfd: the fd from which to read line input
  *@histcount: the history line number count
  */
-typedef struct passinfo
+typedef struct feeding
 {
 	char *arg;
 	char **argv;
@@ -82,9 +84,9 @@ typedef struct passinfo
 	int err_num;
 	int linecount_flag;
 	char *fname;
-	list_t *env;
-	list_t *history;
-	list_t *alias;
+	roster_t *env;
+	roster_t *history;
+	roster_t *alias;
 	char **environ;
 	int env_changed;
 	int status;
@@ -93,7 +95,7 @@ typedef struct passinfo
 	int cmd_buf_type; /* CMD_type ||, &&, ; */
 	int readfd;
 	int histcount;
-} SystemInfo;
+} feed_t;
 
 #define INFO_INIT \
 {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 0, 0, NULL, \
@@ -107,48 +109,48 @@ typedef struct passinfo
 typedef struct builtin
 {
 	char *type;
-	int (*func)(SystemInfo *);
+	int (*func)(feed_t *);
 } builtin_table;
 
 
-/* hsh.c */
-int hsh(SystemInfo *, char **);
-int find_builtin(SystemInfo *);
-void find_cmd(SystemInfo *);
-void fork_cmd(SystemInfo *);
+/* hsh  */
+int hsh(feed_t *, char **);
+int find_builtin(feed_t *);
+void find_cmd(feed_t *);
+void fork_cmd(feed_t *);
 
-/* path.c */
-int is_cmd(SystemInfo *, char *);
+/* path  */
+int is_cmd(feed_t *, char *);
 char *dup_chars(char *, int, int);
-char *find_path(SystemInfo *, char *, char *);
+char *find_path(feed_t *, char *, char *);
 
-/* loophsh.c */
+/* loophsh  */
 int loophsh(char **);
 
-/* err_string_functions.c */
+/* err_string_functions  */
 void _eputs(char *);
 int _eputchar(char);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
-/* string_functions.c */
+/* string_functions  */
 int _strlen(char *);
 int _strcmp(char *, char *);
 char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
 
-/* string_functions2.c */
+/* string_functions2  */
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
 
-/* string_functions3.c */
+/* string_functions3  */
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 
-/* string_functions4.c */
+/* string_functions4  */
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 
@@ -157,79 +159,79 @@ char *_memset(char *, char, unsigned int);
 void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
-/* memory_functions2.c */
+/* memory_functions2  */
 int bfree(void **);
 
-/* more_functions.c */
-int interactive(SystemInfo *);
+/* more_functions  */
+int interactive(feed_t *);
 int is_delim(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
-/* more_functions2.c */
+/* more_functions2  */
 int _erratoi(char *);
-void print_error(SystemInfo *, char *);
+void print_error(feed_t *, char *);
 int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
 
-/* builtin_emulators.c */
-int _shellyexit(SystemInfo *);
-int _shellycd(SystemInfo *);
-int _shellyhelp(SystemInfo *);
+/* builtin_emulators  */
+int _Shellyexit(feed_t *);
+int _Shellycd(feed_t *);
+int _Shellyhelp(feed_t *);
 
-/* builtin_emulators2.c */
-int _shellyhistory(SystemInfo *);
-int _shellyalias(SystemInfo *);
+/* builtin_emulators2  */
+int _Shellyhistory(feed_t *);
+int _Shellyalias(feed_t *);
 
-/* getline.c module */
-ssize_t get_input(SystemInfo *);
-int _getline(SystemInfo *, char **, size_t *);
+/* getline  module */
+ssize_t get_input(feed_t *);
+int _getline(feed_t *, char **, size_t *);
 void sigintHandler(int);
 
-/* info.c module */
-void clear_info(SystemInfo *);
-void set_info(SystemInfo *, char **);
-void free_info(SystemInfo *, int);
+/* info  module */
+void clear_info(feed_t *);
+void set_info(feed_t *, char **);
+void free_info(feed_t *, int);
 
-/* env.c module */
-char *getenv_var(SystemInfo *, const char *);
-int _shellyenv(SystemInfo *);
-int _shellysetenv(SystemInfo *);
-int _shellyunsetenv(SystemInfo *);
-int populate_env_list(SystemInfo *);
+/* env  module */
+char *_getenv(feed_t *, const char *);
+int _Shellyenv(feed_t *);
+int _Shellysetenv(feed_t *);
+int _Shellyunsetenv(feed_t *);
+int populate_env_list(feed_t *);
 
-/* env2.c module */
-char **get_environ(SystemInfo *);
-int _unsetenv(SystemInfo *, char *);
-int _setenv(SystemInfo *, char *, char *);
+/* env2  module */
+char **get_environ(feed_t *);
+int _unsetenv(feed_t *, char *);
+int _setenv(feed_t *, char *, char *);
 
-/* file_io_functions.c */
-char *get_history_file(SystemInfo *context);
-int write_history(SystemInfo context);
-int read_history(SystemInfo context);
-int build_history_list(SystemInfo context, char *buf, int linecount);
-int renumber_history(SystemInfo context);
+/* file_io_functions  */
+char *get_history_file(feed_t *info);
+int write_history(feed_t *info);
+int read_history(feed_t *info);
+int build_history_list(feed_t *info, char *buf, int linecount);
+int renumber_history(feed_t *info);
 
-/* liststr.c module */
-list_t *add_node(list_t **, const char *, int);
-list_t *add_node_end(list_t **, const char *, int);
-size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
-void free_list(list_t **);
+/* liststr  module */
+roster_t *add_node(roster_t **, const char *, int);
+roster_t *add_node_end(roster_t **, const char *, int);
+size_t print_list_str(const roster_t *);
+int delete_node_at_index(roster_t **, unsigned int);
+void free_list(roster_t **);
 
-/* liststr2.c module */
-size_t list_len(const list_t *);
-char **list_to_strings(list_t *);
-size_t print_list(const list_t *);
-list_t *node_starts_with(list_t *, char *, char);
-ssize_t get_node_index(list_t *, list_t *);
+/* 自述文件  module */
+size_t list_len(const roster_t *);
+char **roster_to_strings(roster_t *);
+size_t print_list(const roster_t *);
+roster_t *node_starts_with(roster_t *, char *, char);
+ssize_t get_node_index(roster_t *, roster_t *);
 
-/* chain.c */
-int is_chain(SystemInfo *, char *, size_t *);
-void check_chain(SystemInfo *, char *, size_t *, size_t, size_t);
-int replace_alias(SystemInfo *);
-int replace_vars(SystemInfo *);
+/*  自述文件 */
+int is_chain(feed_t *, char *, size_t *);
+void check_chain(feed_t *, char *, size_t *, size_t, size_t);
+int replace_alias(feed_t *);
+int replace_vars(feed_t *);
 int replace_string(char **, char *);
 
 #endif
