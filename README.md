@@ -91,7 +91,7 @@ $ 退出
 ## 致谢
 以下代码已在研究和理解该项目中使用，并已得到适当归属：
 
-Simple_Shell 作者 J. Smith (2019). [Holberton Shool]. GitHub. (https://github.com/arthurdamm/simple_shell.git)
+<!-- Simple_Shell 作者 J. Smith (2019). [Holberton Shool]. GitHub. (https://github.com/arthurdamm/simple_shell.git) -->
 
 ## 执照
 该项目根据 MIT 许可证获得许可 - 有关详细信息，请参阅许可证文件。
