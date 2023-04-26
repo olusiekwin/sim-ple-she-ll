@@ -150,7 +150,7 @@ char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 
-/* string_functions4  */
+/* string functions 4  */
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 
