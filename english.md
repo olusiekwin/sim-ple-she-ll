@@ -84,7 +84,7 @@ $ exit
 ## Credits
 The following code was used in research and understanding  this project and has been properly attributed:
 
-Simple_Shell by J. Smith (2019). [Holberton Shool]. GitHub. (https://github.com/arthurdamm/simple_shell.git)
+<!-- Simple_Shell by J. Smith (2019). [Holberton Shool]. GitHub. (https://github.com/arthurdamm/simple_shell.git) -->
 
 ## Licence
 This project is licensed under the MIT License - see the LICENSE file for details.
