@@ -55,8 +55,8 @@ typedef struct liststr
 /**
  *struct feeding - contains pseudo-arguements to  feed into a function,
  *					allowing uniform prototype for function pointer struct
- *@arg: string containing arguements generated from getline 
- *@argv: an arg array of strings generated. 
+ *@arg: string containing arguements generated from getline
+ *@argv: an arg array of strings generated.
  *@path: a string path for the current command
  *@argc: the argument count
  *@line_count: the error count
