@@ -124,28 +124,28 @@ int is_cmd(feed_t *, char *);
 char *dup_chars(char *, int, int);
 char *find_path(feed_t *, char *, char *);
 
-/* loophsh  */
+/* loop-hsh  */
 int loophsh(char **);
 
-/* err_string_functions  */
+/* err_string functions  */
 void _eputs(char *);
 int _eputchar(char);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
-/* string_functions  */
+/* string functions  */
 int _strlen(char *);
 int _strcmp(char *, char *);
 char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
 
-/* string_functions2  */
+/* string functions 2  */
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
 void _puts(char *);
 int _putchar(char);
 
-/* string_functions3  */
+/* string functions 3  */
 char *_strncpy(char *, char *, int);
 char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
@@ -154,28 +154,28 @@ char *_strchr(char *, char);
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 
-/* memory_functions */
+/* memory functions */
 char *_memset(char *, char, unsigned int);
 void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
-/* memory_functions2  */
+/* memory functions 2  */
 int bfree(void **);
 
-/* more_functions  */
+/* functions  */
 int interactive(feed_t *);
 int is_delim(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
-/* more_functions2  */
+/* functions2  */
 int _erratoi(char *);
 void print_error(feed_t *, char *);
 int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
 
-/* builtin_emulators  */
+/* builtin emulators  */
 int _Shellyexit(feed_t *);
 int _Shellycd(feed_t *);
 int _Shellyhelp(feed_t *);
