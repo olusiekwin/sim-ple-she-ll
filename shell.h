@@ -28,7 +28,7 @@
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
-#define HIST_FILE	".simple_shell-history"
+#define HIST_FILE	".simple_shell_history"
 #define HIST_MAX	4096
 
 extern char **environ;
@@ -189,31 +189,31 @@ ssize_t get_input(feed_t *);
 int _getline(feed_t *, char **, size_t *);
 void sigintHandler(int);
 
-/* info  module */
+/* 模块信息e */
 void clear_info(feed_t *);
 void set_info(feed_t *, char **);
 void free_info(feed_t *, int);
 
-/* env  module */
+/* 环境模块e */
 char *_getenv(feed_t *, const char *);
 int _Shellyenv(feed_t *);
 int _Shellysetenv(feed_t *);
 int _Shellyunsetenv(feed_t *);
 int populate_env_list(feed_t *);
 
-/* env2  module */
+/* 起泡率 */
 char **get_environ(feed_t *);
 int _unsetenv(feed_t *, char *);
 int _setenv(feed_t *, char *, char *);
 
-/* file_io_functions  */
+/* 文件 _io_ 函数  */
 char *get_history_file(feed_t *info);
 int write_history(feed_t *info);
 int read_history(feed_t *info);
 int build_history_list(feed_t *info, char *buf, int linecount);
 int renumber_history(feed_t *info);
 
-/* liststr  module */
+/* 列表字符串  module */
 roster_t *add_node(roster_t **, const char *, int);
 roster_t *add_node_end(roster_t **, const char *, int);
 size_t print_list_str(const roster_t *);
