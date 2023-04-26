@@ -230,8 +230,8 @@ ssize_t get_node_index(roster_t *, roster_t *);
 /*  自述文件 */
 int is_chain(feed_t *, char *, size_t *);
 void check_chain(feed_t *, char *, size_t *, size_t, size_t);
-int replace_alias(feed_t *);
-int replace_vars(feed_t *);
-int replace_string(char **, char *);
+int substitute_alias(feed_t *);
+int substitute_vars(feed_t *);
+int substitute_string(char **, char *);
 
 #endif
