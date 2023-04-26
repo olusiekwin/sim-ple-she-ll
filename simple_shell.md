@@ -42,4 +42,4 @@ Execute the commands in the script.sh file and exit.
 simple_shell was written by Graham & Eric.
 
 .SH COPYRIGHT
-Copyright (C) 2023 Graham & Eric. This is free software; see the source code for licensing information. There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Copyright (C) 2023 Graham & Erick. This is free software; see the source code for licensing information. There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
