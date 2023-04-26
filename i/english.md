@@ -78,8 +78,9 @@ $ exit
 ```
 
 ## Authors
-- 
-- 
+- [Alphonsi](https://github.com/alphonsi)
+- [Graham](https://github.com/olusiekwin)
+
 
 ## Licence
 This project is licensed under the MIT License - see the LICENSE file for details.

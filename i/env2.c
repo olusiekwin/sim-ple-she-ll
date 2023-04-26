@@ -10,7 +10,7 @@ char **get_environ(feed_t *info)
 {
 	if (!info->environ || info->env_changed)
 	{
-		info->environ =roster_to_strings(info->env);
+		info->environ = roster_to_strings(info->env);
 		info->env_changed = 0;
 	}
 

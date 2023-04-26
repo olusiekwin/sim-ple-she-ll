@@ -84,8 +84,8 @@ $ 退出
 ```
 
 ## 作者
--
--
+- [阿尔方斯.](https://github.com/alphonsi)
+- [格雷厄姆.](https://github.com/olusiekwin)
 
 ＃＃ 执照
 该项目根据 MIT 许可证获得许可 - 有关详细信息，请参阅许可证文件。

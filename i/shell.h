@@ -180,7 +180,7 @@ int _Shellyexit(feed_t *);
 int _Shellycd(feed_t *);
 int _Shellyhelp(feed_t *);
 
-/* builtin_emulators2  */
+/* background.c functions  */
 int _Shellyhistory(feed_t *);
 int _Shellyalias(feed_t *);
 
