@@ -40,9 +40,9 @@ extern char **environ;
 
 
 /**
- * struct liststr - singly linked list
+ * struct liststr - a singly linked list.
  * @num: the number field
- * @str: a string
+ * @str: a given string
  * @next: points to the next node
  */
 typedef struct liststr
