@@ -33,7 +33,7 @@
 
 extern char **environ;
 
-/* for read/write buffers */
+/* for r/w buffer */
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
