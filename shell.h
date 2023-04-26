@@ -15,16 +15,21 @@
 
 
 /* command chaining */
+
 #define CMD_NORM	0
 #define CMD_OR		1
 #define CMD_AND		2
 #define CMD_CHAIN	3
 
+
 /* converts number() */
+
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
 
+
 /* 1 for system getline() */
+
 #define USE_GETLINE 0
 #define USE_STRTOK 0
 
@@ -33,7 +38,9 @@
 
 extern char **environ;
 
+
 /* for r/w buffer */
+
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
@@ -42,7 +49,7 @@ extern char **environ;
 /**
  * struct liststr - a singly linked list.
  * @num: the number field
- * @str: a given string
+ * @str: given string
  * @next: points to the next node
  */
 typedef struct liststr
@@ -113,18 +120,19 @@ typedef struct builtin
 } builtin_table;
 
 
-/* hsh  */
+/* hsh prototypes  */
+
 int hsh(feed_t *, char **);
 int find_builtin(feed_t *);
 void find_cmd(feed_t *);
 void fork_cmd(feed_t *);
 
-/* path  */
+/* path prototypes  */
 int is_cmd(feed_t *, char *);
 char *dup_chars(char *, int, int);
 char *find_path(feed_t *, char *, char *);
 
-/* loop-hsh  */
+/* loop-hsh  prototypes*/
 int loophsh(char **);
 
 /* err_string functions  */
